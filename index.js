@@ -5,8 +5,8 @@ const mongoose =require('mongoose') //to import moongoose
 //const env = require('dotenv')
  app.use(express.json())  //to allow express to read json file
 
- const empRoutes  = require ('./routes/details') // importing details.js file here
- app.use('/' ,empRoutes) 
+  const empRoutes  = require ('./routes/details') // importing details.js file here
+  app.use('/' ,empRoutes) 
 
 //app.use('/emp' ,empRoutes)  method to call sub route. this will call localhost:5500/emp/details
 
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/ekta', (req, res) => {
-  res.send('Hello,ekta....!')
+  res.send('Hello,Ekta....!')
 });
 app.post('/', (req, res) => {
   res.send('Please ,visit again.')

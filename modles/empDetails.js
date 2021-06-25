@@ -14,4 +14,14 @@ const mySchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose('my',mySchema)
+module.exports = mongoose.model('my',mySchema)
+
+// const Employee = new mongoose.Model("Employee",mySchema)
+
+// const newEmployee = new Employee({
+//     name:"ekta",
+//     email:"ekta@gmail.com",
+//     password:"12345",
+  
+// })
+// newEmployee.save()
