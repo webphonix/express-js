@@ -1,7 +1,7 @@
 const express = require ('express') //importing the express 
 // const empDetails = require('../../modles/empDetails')
 const router = express. Router() //importing routrer function
- const myModel = require('../modles/empDetails')
+const myModel = require('../modles/empDetails')
 
 router.get('/details', (req, res) => {
     res.json({
@@ -33,7 +33,7 @@ router.get('/details', (req, res) => {
        res.send(err)
      })
     })
-
+//fetching all data
     router.get('/all', async(req,res) => {
       const details = await myModel.find()
 
