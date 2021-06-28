@@ -2,14 +2,16 @@ const express = require ('express') //importing the express
 const router = express. Router()
 
 const Ekta_Timesheet = require('../model/ekta_details')
+
+
 module.exports=router  
-router.post('/ekta',(req, res) => {
-     const details = new Ekta_Timesheet({ 
+router.post('/ekta', async(req, res) => {
+    const details = new Ekta_Timesheet({
       login_time:req.body.login_time,
       logout_time:req.body.logout_time,
-      task_completed:body.req.task_completed,
-      time_spent:body.req.time_spent,
-      remarks:body.req.remarks
+      task_completed:req.body.task_completed,
+      time_spent:req.body.time_spent,
+      remarks:req.body.remarks
     })
    details.save()
    .then(resp=>{
@@ -54,6 +56,9 @@ router.put('/:id',(req,res)=>{
         $set:{
             login_time:req.body.login_time,
             logout_time:req.body.logout_time,
+            task_completed:req.body.task_completed,
+            time_spent:req.body.time_spent,
+            remarks:req.body.remarks
         }
     }).then(result=>{
         res.status(200).json({
