@@ -3,6 +3,7 @@ const express = require ('express') //importing the express
 const router = express. Router() //importing routrer function
 const myModel = require('../modles/empDetails')
 const jwt= require('jsonwebtoken')
+const verifyToken = require('./verify')
 router.get('/details', (req, res) => {
     res.json({
       body:{
@@ -39,7 +40,7 @@ const token=jwt.sign({_id:123456},'ekta')
      })
     })
 //fetching all data
-    router.get('/all', async(req,res) => {
+    router.get('/all',verifyToken, async(req,res) => {
       const details = await myModel.find()
 
       try{
