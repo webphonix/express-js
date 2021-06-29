@@ -6,7 +6,7 @@ const mySchema = mongoose.Schema({
         require:true
     },
     email:String,
-    password:Number,
+    password:String,
     date:{
         type:Date,
         default:Date.now
