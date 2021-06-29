@@ -6,9 +6,9 @@ const mongoose =require('mongoose') //to import moongoose
  app.use(express.json())  //to allow express to read json file
 
   const empRoutes  = require ('./routes/details') // importing details.js file here
-  const verifyRoutes= require('./routes/verify')
+  // const verifyRoutes= require('./routes/verify')
   app.use('/' ,empRoutes) 
-   app.use('/',verifyRoutes)
+  //  app.use('/',verifyRoutes)
 //app.use('/emp' ,empRoutes)  method to call sub route. this will call localhost:5500/emp/details
 
  
