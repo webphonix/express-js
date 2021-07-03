@@ -4,10 +4,7 @@ const registrationSchema = require('../model/signup')
 const bcrypt = require('bcrypt')
 const jwt= require('jsonwebtoken')
 
-
-  
-    
-   router.post('/signup', async(req, res) => {
+router.post('/signup', async(req, res) => {
       const salt = await bcrypt.genSalt(10)
 
       const hashPassword = await bcrypt.hash(req.body.password,salt) 
@@ -27,8 +24,8 @@ const jwt= require('jsonwebtoken')
     })
 
     router.post('/login', async(req,res)=>{
-        const user = await registrationSchema.findOne({email:req.body.email}) //check email
-       if(!user) return res.send('invalid email.....')  
+        const user = await registrationSchema.findOne({name:req.body.name}) //check name
+       if(!user) return res.send('invalid user name.....')  
     
      const passVerification = await bcrypt.compare(req.body.password,user.password)  //check password
       if(!passVerification) return res.send('invalid password')
@@ -43,5 +40,4 @@ const jwt= require('jsonwebtoken')
          
         
      })
-
     module.exports = router 

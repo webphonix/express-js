@@ -7,7 +7,7 @@ const registrationSchema = mongoose.Schema({
     },
     email:String,
     password:String,
-
+    
     date:{
         type:Date,
         default:Date.now
