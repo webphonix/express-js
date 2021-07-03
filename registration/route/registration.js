@@ -32,7 +32,7 @@ const jwt= require('jsonwebtoken')
     
      const passVerification = await bcrypt.compare(req.body.password,user.password)  //check password
       if(!passVerification) return res.send('invalid password')
-     const token = jwt.sign({_id:user.id,name:user.name},'UserToken')
+     const token = jwt.sign({_id:user.id,name:user.name},process.env.secret)
       user.password = undefined; 
      res.json({
               body:{

@@ -1,3 +1,4 @@
+ require('dotenv').config();
 const express = require('express')
 const app = express() 
 const port = 80
@@ -9,7 +10,7 @@ app.use(express.json())
   
  
 //to connect mongoose
-mongoose.connect('mongodb+srv://ekta:ekta@cluster0.y6gha.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true} ,(err) => {
+mongoose.connect(process.env.db,{useNewUrlParser:true,useUnifiedTopology:true} ,(err) => {
  if(err) return console.log(err.message) //to throw error message
 console.log('database connected')
 });
