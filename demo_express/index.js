@@ -1,7 +1,12 @@
 const express = require('express')
+const path=require('path')
+
 const app = express() 
 const port = 5000
 const mongoose =require('mongoose') //to import moongoose
+
+const staticPath = path.join(__dirname,"..public")
+app.use(express.static(staticPath))
 //const env = require('dotenv')
  app.use(express.json())  //to allow express to read json file
 
