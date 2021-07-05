@@ -65,20 +65,17 @@ router.get('/all', verifyToken, async (req, res) => {
     res.send(err)
   }
 });
-// router.get('/logout', (req,res, next)=>{
-//  res.cookie('jwt', '' , {maxAge: 1})
-//  res.redirect('/')
-// })
 router.get('/logout', (req,res, next)=>{
-  if(req.session.name){
-    res.header('Cache-Control', 'no-cache');
-    req.session.destroy((err)=>{
-      if(err){
-        console.log(err)
-      }
-        res.redirect('/')
+  res.cookie('access-token', '' , {maxAge: 1})
+    res.redirect('/e')
+   
+  })
+  // router.get('/logout', (req,res, next)=>{
+  // req.logout()
+  // req.session.destroy()
+  //        res.redirect('/e')
 
-    })
-  }
- })
+  //    })
+
+    
 module.exports = router
