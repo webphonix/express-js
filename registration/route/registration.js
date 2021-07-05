@@ -40,4 +40,28 @@ router.post('/signup', async(req, res) => {
          
         
      })
+     const verifyToken = (req,res,next) =>{
+      const token = req.headers['access-token'];
+      if(!token) return res.send('access denied');
+  
+  try{
+      const verify =jwt.verify(token,process.env.secret)
+      req.user= verify;
+      next()
+  }
+  catch(err){
+      res.status(401).send('invalid access')
+  }
+  }
+     router.get('/all',verifyToken, async(req,res) => {
+      const details = await registrationSchema.find()
+
+      try{
+        res.send (details)
+      }
+      catch(err)
+      {
+      res.send(err)
+      }
+    });
     module.exports = router 
