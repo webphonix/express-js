@@ -8,7 +8,9 @@ app.use(express.json())
  const registrationRoute = require ('./route/registration') 
   app.use('/' ,registrationRoute) 
   
- 
+  app.get('/e', (req, res) => {
+    res.send('Hello,Welcome.....!')
+  });
 //to connect mongoose
 mongoose.connect(process.env.db,{useNewUrlParser:true,useUnifiedTopology:true} ,(err) => {
  if(err) return console.log(err.message) //to throw error message
