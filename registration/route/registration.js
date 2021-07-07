@@ -6,17 +6,18 @@ const jwt = require('jsonwebtoken')
 
 router.post('/signup', async (req, res) => {
   const salt = await bcrypt.genSalt(10)
-
+  
   const hashPassword = await bcrypt.hash(req.body.password, salt)
 
   const details = new registrationSchema({
     name: req.body.name,
     email: req.body.email,
-    password: hashPassword
-  })
+    password: hashPassword,
+      })
   details.save()
     .then(resp => {
       res.send(resp)
+      
     })
     .catch(err => {
       res.send(err)
@@ -65,11 +66,16 @@ router.get('/all', verifyToken, async (req, res) => {
     res.send(err)
   }
 });
-router.get('/logout', (req,res, next)=>{
-  res.cookie('access-token', '' , {maxAge: 1})
-    res.redirect('/e')
+
+// router.post('/logout', async(req,res, next)=>{
+//   // res.cookie('access-token', '' , {maxAge: 1})
+//   jwt.destroy(req.headers['access-token'])
+//  // user.name=""
+  
+//   req.headers['access-token']=null
+//   res.redirect('/e')
    
-  })
+//   })
   // router.get('/logout', (req,res, next)=>{
   // req.logout()
   // req.session.destroy()
